@@ -1,0 +1,18 @@
+---
+title: "Introduction to R"
+format: revealjs
+editor: visual
+---
+
+## What is R
+
+## R vs Stata
+
+## RStudio
+
+## Git and GitHub
+
+
+## Our Workflow
+
+## Explaining the Cluster Analysis
