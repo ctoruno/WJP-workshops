@@ -478,8 +478,8 @@
 <h2>Global Environment</h2>
 
 <img data-src="media/genv.png" class="r-stretch"></section>
-<section id="functional-programming" class="slide level2 smaller">
-<h2>Functional Programming</h2>
+<section id="base-functionalities" class="slide level2 smaller">
+<h2>Base Functionalities</h2>
 <div class="columns">
 <div class="column" style="width:48%;">
 <p><span class="chead">Stata</span></p>
@@ -495,8 +495,8 @@
 </div><div class="column" style="width:48%;">
 <p><span class="chead">R</span></p>
 <ul>
-<li>Most popular packages are developed by Posit</li>
-<li>R comes with a very limited set of functions in the <strong>base</strong> version (90MB)</li>
+<li>Most popular packages are maintained (not developed) by Posit</li>
+<li>R comes with a very limited set of functions in the <strong>R base</strong> version (90MB)</li>
 <li>You depend a lot of the community and their developments</li>
 <li>You install <span class="high">packages</span> using <code>install.packages()</code></li>
 <li>Packages come with a wide range of <span class="high">functions</span></li>
@@ -507,7 +507,7 @@
 <section id="libraries" class="slide level2 smaller">
 <h2>Libraries</h2>
 <ul>
-<li>You always need to load packages outside the <strong>base</strong> version:</li>
+<li>You always need to load packages outside the <span class="high">R base</span> version:</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -531,6 +531,124 @@
 <span id="cb2-15"><a href="#cb2-15"></a>  <span class="st">"tidyverse"</span></span>
 <span id="cb2-16"><a href="#cb2-16"></a>  </span>
 <span id="cb2-17"><a href="#cb2-17"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="the-tidyverse" class="slide level2 smaller">
+<h2>The Tidyverse</h2>
+<ul>
+<li>The tidyverse is a collection of packages designed for data science.</li>
+<li>These packages are actively developed by the community and maintained by <strong>Posit</strong>.</li>
+<li>They share an underlying <span class="high">design philosophy</span>, grammar, and data structures.</li>
+<li>Due to how they complement each other, it is very difficult to distinguish between individual packages.</li>
+<li>They have come to replace many of the functionalities from the <strong>base</strong> version of R.</li>
+<li>Due to their importance, they are always loaded in every script.</li>
+<li>More information on <a href="https://www.tidyverse.org/"><strong>tidyverse.org</strong></a></li>
+</ul>
+</section>
+<section id="base-r-vs-tidyverse" class="slide level2 smaller">
+<h2>Base R vs Tidyverse</h2>
+<p><span class="chead">Base R:</span></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Loading CSV data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>dataFrame <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># Creating a new variable</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>dataFrame<span class="sc">$</span>age_square <span class="ot">&lt;-</span> age<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co"># Subsetting the data frame</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>dataFrame <span class="ot">&lt;-</span> dataFrame[dataFrame<span class="sc">$</span>age_square <span class="sc">&gt;=</span> <span class="dv">250</span>, ]</span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co"># Merging</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="fu">merge</span>(dataFrame, aux_data, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="chead">Tidyverse:</span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Loading CSV data</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>dataFrame <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data.csv"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="co"># Creating a variable, subsetting and merging:</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>dataFrame <span class="ot">&lt;-</span> dataFrame <span class="sc">%&gt;%</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="fu">mutate</span>(<span class="at">age_square =</span> age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="fu">filter</span>(age_square <span class="sc">&gt;=</span> <span class="dv">250</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="fu">left_join</span>(aux_data, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stata-vs-tidyverse" class="slide level2 smaller">
+<h2>Stata vs Tidyverse</h2>
+<p><span class="chead">Stata:</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1"></a># Loading CSV <span class="kw">data</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>import delimited <span class="st">"data.csv"</span>, <span class="kw">clear</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a># Creating a <span class="kw">new</span> <span class="kw">variable</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="kw">gen</span> age^2</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a># Subsetting the <span class="kw">data</span> frame</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="kw">keep</span> <span class="kw">if</span> age_square &gt;= 250</span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a># Merging</span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="kw">merge</span> 1:1 id <span class="kw">using</span> <span class="st">"aux_data"</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a># Collapsing <span class="kw">data</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="kw">collapse</span> (<span class="kw">mean</span>) age_square, <span class="kw">by</span>(country)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="chead">Tidyverse:</span></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Loading CSV data</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>dataFrame <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data.csv"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co"># Manipulating data </span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>dataFrame_new <span class="ot">&lt;-</span> dataFrame <span class="sc">%&gt;%</span>     <span class="co"># Saving as a different object</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">mutate</span>(<span class="at">age_square =</span> age<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  <span class="fu">filter</span>(age_square <span class="sc">&gt;=</span> <span class="dv">250</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>  <span class="fu">left_join</span>(aux_data, <span class="at">by =</span> <span class="st">"id"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>  <span class="fu">summarise</span>(<span class="at">age_square =</span> <span class="fu">mean</span>(age_square))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="functional-programming" class="slide level2 smaller">
+<h2>Functional Programming</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="chead">Stata</span></p>
+<ul>
+<li>Stata is designed around <span class="high">commands</span> in which you define options and arguments.</li>
+<li>Thanks to the <span class="high">ado</span> and <span class="high">mata</span> languages, you can write your own commands.</li>
+<li>All commands must be named using <code>program define</code></li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">program</span> <span class="kw">define</span> my_function</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="kw">display</span> <span class="st">"Hello, world"</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<p><span class="chead">R</span></p>
+<ul>
+<li>R is designed around <span class="high">functions</span> where you only define arguemts.</li>
+<li>R allows you to write named and <span class="high">lambda</span> functions.</li>
+<li>Lambda functions are functions that you write on the go and directly apply to the data without having to save it or write a script just for the function.</li>
+<li>You create functions using <code>function()</code></li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">function</span>(){</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">print</span>(<span class="st">"Hello, world"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="overall-comparison" class="slide level2 smaller">
+<h2>Overall Comparison</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><span class="chead">Stata</span></p>
+<ul>
+<li>Syntax has a low learning curve</li>
+<li>Highly specialized, straightforward commands</li>
+<li>Slow development of new features</li>
+<li>Limited harmonization with other languages and tools: python, markdown, git, html</li>
+</ul>
+</div><div class="column" style="width:4%;">
+
+</div><div class="column" style="width:48%;">
+<p><span class="chead">R</span></p>
+<ul>
+<li>Syntax has a very steep learning curve</li>
+<li>Less specialized, but more flexible options</li>
+<li>Faster development of new packages</li>
+<li>Advanced capabilities and harmonization with other languages and tools: python, markdown, git, html</li>
+</ul>
+</div>
+</div>
 </section></section>
 <section>
 <section id="workflow" class="title-slide slide level1 center">

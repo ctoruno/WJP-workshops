@@ -79,7 +79,7 @@ editor: visual
 
 ![](media/genv.png)
 
-##  Functional Programming {.smaller}
+##  Base Functionalities {.smaller}
 
 :::: {.columns}
 
@@ -99,8 +99,8 @@ editor: visual
 ::: {.column width="48%"}
 [R]{.chead}
 
-- Most popular packages are developed by Posit
-- R comes with a very limited set of functions in the **base** version (90MB)
+- Most popular packages are maintained (not developed) by Posit
+- R comes with a very limited set of functions in the **R base** version (90MB)
 - You depend a lot of the community and their developments
 - You install [packages]{.high} using `install.packages()`
 - Packages come with a wide range of [functions]{.high}
@@ -109,7 +109,7 @@ editor: visual
 ::::
 
 ## Libraries {.smaller}
-- You always need to load packages outside the [base]{.high} version:
+- You always need to load packages outside the [R base]{.high} version:
 
 ```{.r}
 library(tidyverse)
@@ -137,6 +137,149 @@ p_load(char = c(
 ))
 
 ```
+
+
+## The Tidyverse {.smaller}
+- The tidyverse is a collection of packages designed for data science. 
+- These packages are actively developed by the community and maintained by **Posit**. 
+- They share an underlying [design philosophy]{.high}, grammar, and data structures.
+- Due to how they complement each other, it is very difficult to distinguish between individual packages.
+- They have come to replace many of the functionalities from the **base** version of R.
+- Due to their importance, they are always loaded in every script.
+- More information on [**tidyverse.org**](https://www.tidyverse.org/)
+
+## Base R vs Tidyverse {.smaller}
+
+[Base R:]{.chead}
+
+```{.r}
+# Loading CSV data
+dataFrame <- read.csv("data.csv")
+
+# Creating a new variable
+dataFrame$age_square <- age^2
+
+# Subsetting the data frame
+dataFrame <- dataFrame[dataFrame$age_square >= 250, ]
+
+# Merging
+merge(dataFrame, aux_data, by = "id")
+```
+
+[Tidyverse:]{.chead}
+
+```{.r}
+# Loading CSV data
+dataFrame <- read_csv("data.csv")
+
+# Creating a variable, subsetting and merging:
+dataFrame <- dataFrame %>%
+  mutate(age_square = age^2) %>%
+  filter(age_square >= 250) %>%
+  left_join(aux_data, by = "id")
+```
+
+## Stata vs Tidyverse {.smaller}
+
+[Stata:]{.chead}
+
+```{.stata}
+# Loading CSV data
+import delimited "data.csv", clear
+
+# Creating a new variable
+gen age^2
+
+# Subsetting the data frame
+keep if age_square >= 250
+
+# Merging
+merge 1:1 id using "aux_data"
+
+# Collapsing data
+collapse (mean) age_square, by(country)
+```
+
+[Tidyverse:]{.chead}
+
+```{.r}
+# Loading CSV data
+dataFrame <- read_csv("data.csv")
+
+# Manipulating data 
+dataFrame_new <- dataFrame %>%     # Saving as a different object
+  mutate(age_square = age^2) %>%
+  filter(age_square >= 250) %>%
+  left_join(aux_data, by = "id") %>%
+  group_by(country) %>%
+  summarise(age_square = mean(age_square))
+```
+
+## Functional Programming {.smaller}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+[Stata]{.chead}
+
+- Stata is designed around [commands]{.high} in which you define options and arguments.
+- Thanks to the [ado]{.high} and [mata]{.high} languages, you can write your own commands.
+- All commands must be named using `program define`
+
+```{.stata}
+program define my_function
+  display "Hello, world"
+end
+```
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+[R]{.chead}
+
+- R is designed around [functions]{.high} where you only define arguemts.
+- R allows you to write named and [lambda]{.high} functions.
+- Lambda functions are functions that you write on the go and directly apply to the data without having to save it or write a script just for the function.
+- You create functions using `function()`
+
+```{.r}
+function(){
+  print("Hello, world")
+}
+```
+:::
+
+::::
+
+## Overall Comparison {.smaller}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+[Stata]{.chead}
+
+- Syntax has a low learning curve
+- Highly specialized, straightforward commands
+- Slow development of new features
+- Limited harmonization with other languages and tools: python, markdown, git, html
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+[R]{.chead}
+
+- Syntax has a very steep learning curve
+- Less specialized, but more flexible options
+- Faster development of new packages
+- Advanced capabilities and harmonization with other languages and tools: python, markdown, git, html
+:::
+
+::::
+
 
 # Workflow
 
