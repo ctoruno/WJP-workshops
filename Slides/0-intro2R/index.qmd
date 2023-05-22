@@ -1,14 +1,144 @@
 ---
 title: "Introduction to R"
-format: revealjs
+subtitle: "Brief introduction for STATA users<br><br><small>Data Analytics Unit</small>"
+format:
+  revealjs: 
+    theme: [simple, custom.scss]
 editor: visual
 ---
 
-## What is R
+# Intro
 
-## R vs Stata
+## What is R? {.smaller}
 
-## RStudio
+- R is a high-level programming language for statistical computing and data visualization.
+- It is a dialect of the S programming language.
+- It is the second most popular programming language for data science just behind Python.
+- Paradigm:
+  - [Functional Programming]{.high}
+  - [Object-oriented]{.high}
+- Latest version: R 4.3.0 launched in April, 2023
+
+## Popularity {.smaller}
+- According to Google Trends, R is around 10 times more popular than Stata in Google Searches:
+
+![](media/trends.png)
+
+## RStudio I {.smaller}
+- R is a language [NOT]{.high} a program.
+- You can interact directly with your computer by opening the terminal and write there.
+- People usually use an Integrated Development Environment (IDE) to interact with their machines using R.
+- The most commonly IDE when working with R is RStudio
+- Latest version for Mac: 2023.03.1
+
+## RStudio II
+![](media/rstudio.png)
+
+## R Scripts {.smaller}
+:::: {.columns}
+
+::: {.column width="70%"}
+![](media/script-example.png)
+:::
+
+::: {.column width="30%"}
+- Scripts are the most important part of RStudio.
+- Equivalent to do-files in Stata.
+- Cornerstone of reproducibility.
+:::
+
+::::
+
+# R vs Stata
+
+## Data and Objects {.smaller}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+[Stata]{.chead}
+
+- You can have [only one]{.high} data set open at a time
+- You can save matrices, globals and locals as secondary objects
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+[R]{.chead}
+
+- You can load [multiple]{.high} data sets as your memory allows it.
+- Everything you load or save is saved as an [object]{.high} in the Global Environment
+- You haave a wide range of data types at your disposal: data frames, functions, vectors, values, lists, tupples, matrices, etc.
+:::
+
+::::
+
+## Global Environment
+
+![](media/genv.png)
+
+##  Functional Programming {.smaller}
+
+:::: {.columns}
+
+::: {.column width="48%"}
+[Stata]{.chead}
+
+- Stata is mainly developed by STATA Corp
+- Most of the commands you use on a daily basis are out-of-the-box (2GB)
+- Commands written by the community are secondary
+- You install [commands]{.high} using `ssc install`
+- Commands are always ready to be used
+:::
+
+::: {.column width="4%"}
+:::
+
+::: {.column width="48%"}
+[R]{.chead}
+
+- Most popular packages are developed by Posit
+- R comes with a very limited set of functions in the **base** version (90MB)
+- You depend a lot of the community and their developments
+- You install [packages]{.high} using `install.packages()`
+- Packages come with a wide range of [functions]{.high}
+:::
+
+::::
+
+## Libraries {.smaller}
+- You always need to load packages outside the [base]{.high} version:
+
+```{.r}
+library(tidyverse)
+library(sf)
+```
+
+- We use the [pacman]{.high} library to load our packages:
+```{.r}
+# Required packages
+library(pacman)
+
+p_load(char = c(
+  # Visualizations
+  "showtext", "ggtext", "ggsankey", "patchwork",
+  
+  # Data Loading
+  "haven", "readxl",
+  
+  # GIS
+  "tmaptools", "rmapshaper", "sf",
+  
+  # Good 'ol Tidyverse
+  "tidyverse"
+  
+))
+
+```
+
+# Workflow
 
 ## Git and GitHub
 
