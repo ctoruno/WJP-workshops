@@ -278,41 +278,42 @@ function(){
 # Workflow
 
 ## Git and GitHub {.smaller}
-- [Git](https://git-scm.com/){.high} is a free and open source software that allows users to set up a [version control system]{.high}.
-- Given the nature of its features, it is normally used for [collaboratively developing code]{.high} and [data integrity]{.high}.
-- [GitHub](https://github.com/){.high} is a website and cloud-based service that helps developers store and manage their code, as well as track and control changes to their code through git. 
-- The workflow in the Data Analytics Unit starts and finishes with Git.
+
+-   [Git](https://git-scm.com/){.high} is a free and open source software that allows users to set up a [version control system]{.high}.
+-   Given the nature of its features, it is normally used for [collaboratively developing code]{.high} and [data integrity]{.high}.
+-   [GitHub](https://github.com/){.high} is a website and cloud-based service that helps developers store and manage their code, as well as track and control changes to their code through git.
+-   The workflow in the Data Analytics Unit starts and finishes with Git.
 
 ## GitHub
+
 ![](media/github-ex.png)
 
 ## Workflow Definition and Features {.smaller}
 
-- A workflow is a system for managing repetitive processes and tasks which occur in a particular order.
+-   A workflow is a system for managing repetitive processes and tasks which occur in a particular order.
 
-  - Output recognition
-  -  Process understanding
-  - Tasks that compose the process
-  - Tasks simplification
+    -   Output recognition
+    -   Process understanding
+    -   Tasks that compose the process
+    -   Tasks simplification
 
-- Why we need so much structure? [**Human Rights Data Analysis Group**](https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/)
+-   Why we need so much structure? [**Human Rights Data Analysis Group**](https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/)
 
-  - We can learn from the past (record and improve our process)
-  - We can read each other work
-  - We can’t test whether what we’ve done is correct
+    -   We can learn from the past (record and improve our process)
+    -   We can read each other work
+    -   We can't test whether what we've done is correct
 
-## Our Workflow {.smaller}  
+## Our Workflow {.smaller}
 
-- [**LAC Reports Workflow**](https://github.com/ctoruno/LAC-Reports)
-- [**Visualization Repository**](https://github.com/ctoruno/WJP-Data-Viz)
-- [**Handbook**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
+-   [**LAC Reports Workflow**](https://github.com/ctoruno/LAC-Reports)
+-   [**Visualization Repository**](https://github.com/ctoruno/WJP-Data-Viz)
+-   [**Handbook**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
 
 ![](media/code_structure.png)
 
+## Explaining the Cluster Analysis {.smaller}
 
-## Explaining the Cluster Analysis {.smaller}  
-
-- First we load all the libraries we need, and also we load the data base that contains all the historical scores.
+-   First we load all the libraries we need, and also we load the data base that contains all the historical scores.
 
 ``` r
 # Loading libraries
@@ -329,11 +330,11 @@ p_load(readxl,
 
 master_data.df <- read_csv("Data/master_data.csv") %>%
   mutate(region4labels = str_replace_all(region, "&", "&\n"))
-
 ```
-## Explaining the Cluster Analysis {.smaller}  
 
-- We prepare the data. We need a data base with the rate of the scores between 2015 and 2022.
+## Explaining the Cluster Analysis {.smaller}
+
+-   We prepare the data. We need a data base with the rate of the scores between 2015 and 2022.
 
 ``` r
 factors_data <- master_data.df %>%
@@ -362,7 +363,8 @@ factors_data <- master_data.df %>%
          differences_roli = (roli_index_2022 - roli_index_2015)/roli_index_2015) %>%
   select(country, starts_with("differences"))
 ```
-## Explaining the Cluster Analysis {.smaller}  
+
+## Explaining the Cluster Analysis {.smaller}
 
 We do some tests to define the optimal number of clusters. This is based on the independent information provided by each one.
 
@@ -372,26 +374,23 @@ fviz_nbclust(cluster_data, kmeans, method = 'wss') # According to the graph the 
 fviz_nbclust(cluster_data, kmeans, method = 'silhouette') # According to this method the optimal 
                                                           # number of cluster is two
 ```
+
 ::: columns
 ::: {.column width="48%"}
-
 ![](media/clusters.png)
 :::
-::: {.column width="48%"}
 
+::: {.column width="48%"}
 ![](media/clusters2.png)
 :::
 :::
 
-## Explaining the Cluster Analysis {.smaller}  
+## Explaining the Cluster Analysis {.smaller}
 
 We constructed each cluster using the Hierarchical Clustering Method and determined the distribution pattern of each country.
 
 ``` r
 res2 <- hcut(cluster_data, k = 3, stand = T, hc_metric = 'euclidean') # We use the package FactoMineR
 ```
+
 ![](media/dendogram.png)
-
-
-
-
