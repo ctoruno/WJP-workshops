@@ -277,7 +277,14 @@ function(){
 
 # Workflow
 
-## Git and GitHub
+## Git and GitHub {.smaller}
+- [Git](https://git-scm.com/){.high} is a free and open source software that allows users to set up a [version control system]{.high}.
+- Given the nature of its features, it is normally used for [collaboratively developing code]{.high} and [data integrity]{.high}.
+- [GitHub](https://github.com/){.high} is a website and cloud-based service that helps developers store and manage their code, as well as track and control changes to their code through git. 
+- The workflow in the Data Analytics Unit starts and finishes with Git.
+
+## GitHub
+![](media/github-ex.png)
 
 ## Workflow Definition and Features {.smaller}
 
