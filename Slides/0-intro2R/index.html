@@ -682,19 +682,29 @@
 <ul>
 <li>We can learn from the past (record and improve our process)</li>
 <li>We can read each other work</li>
-<li>We can’t test whether what we’ve done is correct</li>
+<li>We can test whether what we’ve done is correct</li>
 </ul></li>
 </ul>
 </section>
 <section id="our-workflow" class="slide level2 smaller">
 <h2>Our Workflow</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
 <ul>
 <li><a href="https://github.com/ctoruno/LAC-Reports"><strong>LAC Reports Workflow</strong></a></li>
 <li><a href="https://github.com/ctoruno/WJP-Data-Viz"><strong>Visualization Repository</strong></a></li>
 <li><a href="https://ctoruno.quarto.pub/wjp-r-handbook/coding.html"><strong>Handbook</strong></a></li>
 </ul>
+</div><div class="column" height="100%" style="width:50%;">
+<p><img data-src="media/code_structure.png"></p>
+</div>
+</div>
+</section></section>
+<section>
+<section id="cluster-analysis" class="title-slide slide level1 center">
+<h1>Cluster Analysis</h1>
 
-<img data-src="media/code_structure.png" class="r-stretch"></section>
+</section>
 <section id="explaining-the-cluster-analysis" class="slide level2 smaller">
 <h2>Explaining the Cluster Analysis</h2>
 <ul>
@@ -766,7 +776,39 @@
 <p>We constructed each cluster using the Hierarchical Clustering Method and determined the distribution pattern of each country.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">hcut</span>(cluster_data, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">stand =</span> T, <span class="at">hc_metric =</span> <span class="st">'euclidean'</span>) <span class="co"># We use the package FactoMineR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="media/dendogram.png" class="r-stretch"><div class="footer footer-default">
+<img data-src="media/dendogram.png" class="r-stretch"></section>
+<section id="main-results-of-the-cluster-analysis" class="slide level2 smaller">
+<h2>Main results of the Cluster Analysis</h2>
+
+<img data-src="media/changes_roli_by_cluster.png" class="r-stretch"></section>
+<section id="main-results-of-the-cluster-analysis-1" class="slide level2 smaller">
+<h2>Main results of the Cluster Analysis</h2>
+
+<img data-src="media/changes_factors_by_cluster.png" class="r-stretch"></section></section>
+<section>
+<section id="resources-for-learning-and-troubleshooting" class="title-slide slide level1 center">
+<h1>Resources for learning and troubleshooting</h1>
+
+</section>
+<section id="resources-for-learning" class="slide level2">
+<h2>Resources for learning</h2>
+<ul>
+<li><p><a href="https://www.datacamp.com/"><strong>DataCamp</strong></a></p></li>
+<li><p><a href="https://jjallaire.github.io/hopr/basics.html"><strong>Basis for R</strong></a></p></li>
+<li><p><a href="https://rpubs.com/"><strong>Rpubs</strong></a></p></li>
+<li><p><a href="https://www.data-to-viz.com/#scatter"><strong>Data visualization</strong></a></p></li>
+<li><p><a href="https://www.tidyverse.org/"><strong>Data management and analysis</strong></a></p></li>
+<li><p><a href="https://ctoruno.quarto.pub/wjp-r-handbook/coding.html"><strong>DAU blog</strong></a></p></li>
+</ul>
+</section>
+<section id="resources-for-troubleshooting" class="slide level2">
+<h2>Resources for troubleshooting</h2>
+<ul>
+<li><p><a href="https://openai.com/blog/chatgpt"><strong>Chat GPT</strong></a></p></li>
+<li><p><a href="https://stackoverflow.com/"><strong>Stack overflow</strong></a></p></li>
+<li><p>Carlos and Santiago</p></li>
+</ul>
+<div class="footer footer-default">
 
 </div>
 </section></section>

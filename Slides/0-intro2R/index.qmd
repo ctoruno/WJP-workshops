@@ -299,6 +299,7 @@ function(){
 
 -   Why we need so much structure? [**Human Rights Data Analysis Group**](https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/)
 
+<<<<<<< Updated upstream
     -   We can learn from the past (record and improve our process)
     -   We can read each other work
     -   We can't test whether what we've done is correct
@@ -312,6 +313,26 @@ function(){
 ![](media/code_structure.png)
 
 ## Explaining the Cluster Analysis {.smaller}
+=======
+  - We can learn from the past (record and improve our process)
+  - We can read each other work
+  - We can test whether what we’ve done is correct
+
+## Our Workflow {.smaller}  
+::: columns
+::: {.column width="48%"}
+- [**LAC Reports Workflow**](https://github.com/ctoruno/LAC-Reports)
+- [**Visualization Repository**](https://github.com/ctoruno/WJP-Data-Viz)
+- [**Handbook**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
+:::
+::: {.column width="50%" height="100%"}
+![](media/code_structure.png)
+
+:::
+:::
+
+# Cluster Analysis
+>>>>>>> Stashed changes
 
 -   First we load all the libraries we need, and also we load the data base that contains all the historical scores.
 
@@ -394,3 +415,43 @@ res2 <- hcut(cluster_data, k = 3, stand = T, hc_metric = 'euclidean') # We use t
 ```
 
 ![](media/dendogram.png)
+<<<<<<< Updated upstream
+=======
+
+## Main results of the Cluster Analysis {.smaller}  
+
+
+![](media/changes_roli_by_cluster.png)
+
+## Main results of the Cluster Analysis {.smaller}  
+
+![](media/changes_factors_by_cluster.png)
+
+
+# Resources for learning and troubleshooting
+
+## Resources for learning
+
+- [**DataCamp**](https://www.datacamp.com/)
+
+- [**Basis for R**](https://jjallaire.github.io/hopr/basics.html)
+
+- [**Rpubs**](https://rpubs.com/)
+
+- [**Data visualization**](https://www.data-to-viz.com/#scatter)
+
+- [**Data management and analysis**](https://www.tidyverse.org/)
+
+- [**DAU blog**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
+
+## Resources for troubleshooting
+
+- [**Chat GPT**](https://openai.com/blog/chatgpt)
+
+- [**Stack overflow**](https://stackoverflow.com/)
+
+- Carlos and Santiago
+
+
+
+>>>>>>> Stashed changes
