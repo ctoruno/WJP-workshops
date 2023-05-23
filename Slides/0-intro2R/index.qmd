@@ -11,55 +11,56 @@ editor: visual
 
 ## What is R? {.smaller}
 
-- R is a high-level programming language for statistical computing and data visualization.
-- It is a dialect of the S programming language.
-- It is the second most popular programming language for data science just behind Python.
-- Paradigm:
-  - [Functional Programming]{.high}
-  - [Object-oriented]{.high}
-- Latest version: R 4.3.0 launched in April, 2023
+-   R is a high-level programming language for statistical computing and data visualization.
+-   It is a dialect of the S programming language.
+-   It is the second most popular programming language for data science just behind Python.
+-   Paradigm:
+    -   [Functional Programming]{.high}
+    -   [Object-oriented]{.high}
+-   Latest version: R 4.3.0 launched in April, 2023
 
 ## Popularity {.smaller}
-- According to Google Trends, R is around 10 times more popular than Stata in Google Searches:
+
+-   According to Google Trends, R is around 10 times more popular than Stata in Google Searches:
 
 ![](media/trends.png)
 
 ## RStudio I {.smaller}
-- R is a language [NOT]{.high} a program.
-- You can interact directly with your computer by opening the terminal and write there.
-- People usually use an Integrated Development Environment (IDE) to interact with their machines using R.
-- The most commonly IDE when working with R is RStudio
-- Latest version for Mac: 2023.03.1
+
+-   R is a language [NOT]{.high} a program.
+-   You can interact directly with your computer by opening the terminal and write there.
+-   People usually use an Integrated Development Environment (IDE) to interact with their machines using R.
+-   The most commonly IDE when working with R is RStudio
+-   Latest version for Mac: 2023.03.1
 
 ## RStudio II
+
 ![](media/rstudio.png)
 
 ## R Scripts {.smaller}
-:::: {.columns}
 
+::: columns
 ::: {.column width="70%"}
 ![](media/script-example.png)
 :::
 
 ::: {.column width="30%"}
-- Scripts are the most important part of RStudio.
-- Equivalent to do-files in Stata.
-- Cornerstone of reproducibility.
+-   Scripts are the most important part of RStudio.
+-   Equivalent to do-files in Stata.
+-   Cornerstone of reproducibility.
 :::
-
-::::
+:::
 
 # R vs Stata
 
 ## Data and Objects {.smaller}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="48%"}
 [Stata]{.chead}
 
-- You can have [only one]{.high} data set open at a time
-- You can save matrices, globals and locals as secondary objects
+-   You can have [only one]{.high} data set open at a time
+-   You can save matrices, globals and locals as secondary objects
 :::
 
 ::: {.column width="4%"}
@@ -68,29 +69,27 @@ editor: visual
 ::: {.column width="48%"}
 [R]{.chead}
 
-- You can load [multiple]{.high} data sets as your memory allows it.
-- Everything you load or save is saved as an [object]{.high} in the Global Environment
-- You haave a wide range of data types at your disposal: data frames, functions, vectors, values, lists, tupples, matrices, etc.
+-   You can load [multiple]{.high} data sets as your memory allows it.
+-   Everything you load or save is saved as an [object]{.high} in the Global Environment
+-   You haave a wide range of data types at your disposal: data frames, functions, vectors, values, lists, tupples, matrices, etc.
 :::
-
-::::
+:::
 
 ## Global Environment
 
 ![](media/genv.png)
 
-##  Base Functionalities {.smaller}
+## Base Functionalities {.smaller}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="48%"}
 [Stata]{.chead}
 
-- Stata is mainly developed by STATA Corp
-- Most of the commands you use on a daily basis are out-of-the-box (2GB)
-- Commands written by the community are secondary
-- You install [commands]{.high} using `ssc install`
-- Commands are always ready to be used
+-   Stata is mainly developed by STATA Corp
+-   Most of the commands you use on a daily basis are out-of-the-box (2GB)
+-   Commands written by the community are secondary
+-   You install [commands]{.high} using `ssc install`
+-   Commands are always ready to be used
 :::
 
 ::: {.column width="4%"}
@@ -99,25 +98,26 @@ editor: visual
 ::: {.column width="48%"}
 [R]{.chead}
 
-- Most popular packages are maintained (not developed) by Posit
-- R comes with a very limited set of functions in the **R base** version (90MB)
-- You depend a lot of the community and their developments
-- You install [packages]{.high} using `install.packages()`
-- Packages come with a wide range of [functions]{.high}
+-   Most popular packages are maintained (not developed) by Posit
+-   R comes with a very limited set of functions in the **R base** version (90MB)
+-   You depend a lot of the community and their developments
+-   You install [packages]{.high} using `install.packages()`
+-   Packages come with a wide range of [functions]{.high}
+:::
 :::
 
-::::
-
 ## Libraries {.smaller}
-- You always need to load packages outside the [R base]{.high} version:
 
-```{.r}
+-   You always need to load packages outside the [R base]{.high} version:
+
+``` r
 library(tidyverse)
 library(sf)
 ```
 
-- We use the [pacman]{.high} library to load our packages:
-```{.r}
+-   We use the [pacman]{.high} library to load our packages:
+
+``` r
 # Required packages
 library(pacman)
 
@@ -135,24 +135,23 @@ p_load(char = c(
   "tidyverse"
   
 ))
-
 ```
 
-
 ## The Tidyverse {.smaller}
-- The tidyverse is a collection of packages designed for data science. 
-- These packages are actively developed by the community and maintained by **Posit**. 
-- They share an underlying [design philosophy]{.high}, grammar, and data structures.
-- Due to how they complement each other, it is very difficult to distinguish between individual packages.
-- They have come to replace many of the functionalities from the **base** version of R.
-- Due to their importance, they are always loaded in every script.
-- More information on [**tidyverse.org**](https://www.tidyverse.org/)
+
+-   The tidyverse is a collection of packages designed for data science.
+-   These packages are actively developed by the community and maintained by **Posit**.
+-   They share an underlying [design philosophy]{.high}, grammar, and data structures.
+-   Due to how they complement each other, it is very difficult to distinguish between individual packages.
+-   They have come to replace many of the functionalities from the **base** version of R.
+-   Due to their importance, they are always loaded in every script.
+-   More information on [**tidyverse.org**](https://www.tidyverse.org/)
 
 ## Base R vs Tidyverse {.smaller}
 
 [Base R:]{.chead}
 
-```{.r}
+``` r
 # Loading CSV data
 dataFrame <- read.csv("data.csv")
 
@@ -168,7 +167,7 @@ merge(dataFrame, aux_data, by = "id")
 
 [Tidyverse:]{.chead}
 
-```{.r}
+``` r
 # Loading CSV data
 dataFrame <- read_csv("data.csv")
 
@@ -183,7 +182,7 @@ dataFrame <- dataFrame %>%
 
 [Stata:]{.chead}
 
-```{.stata}
+``` stata
 # Loading CSV data
 import delimited "data.csv", clear
 
@@ -202,7 +201,7 @@ collapse (mean) age_square, by(country)
 
 [Tidyverse:]{.chead}
 
-```{.r}
+``` r
 # Loading CSV data
 dataFrame <- read_csv("data.csv")
 
@@ -217,16 +216,15 @@ dataFrame_new <- dataFrame %>%     # Saving as a different object
 
 ## Functional Programming {.smaller}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="48%"}
 [Stata]{.chead}
 
-- Stata is designed around [commands]{.high} in which you define options and arguments.
-- Thanks to the [ado]{.high} and [mata]{.high} languages, you can write your own commands.
-- All commands must be named using `program define`
+-   Stata is designed around [commands]{.high} in which you define options and arguments.
+-   Thanks to the [ado]{.high} and [mata]{.high} languages, you can write your own commands.
+-   All commands must be named using `program define`
 
-```{.stata}
+``` stata
 program define my_function
   display "Hello, world"
 end
@@ -239,31 +237,29 @@ end
 ::: {.column width="48%"}
 [R]{.chead}
 
-- R is designed around [functions]{.high} where you only define arguemts.
-- R allows you to write named and [lambda]{.high} functions.
-- Lambda functions are functions that you write on the go and directly apply to the data without having to save it or write a script just for the function.
-- You create functions using `function()`
+-   R is designed around [functions]{.high} where you only define arguemts.
+-   R allows you to write named and [lambda]{.high} functions.
+-   Lambda functions are functions that you write on the go and directly apply to the data without having to save it or write a script just for the function.
+-   You create functions using `function()`
 
-```{.r}
+``` r
 function(){
   print("Hello, world")
 }
 ```
 :::
-
-::::
+:::
 
 ## Overall Comparison {.smaller}
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="48%"}
 [Stata]{.chead}
 
-- Syntax has a low learning curve
-- Highly specialized, straightforward commands
-- Slow development of new features
-- Limited harmonization with other languages and tools: python, markdown, git, html
+-   Syntax has a low learning curve
+-   Highly specialized, straightforward commands
+-   Slow development of new features
+-   Limited harmonization with other languages and tools: python, markdown, git, html
 :::
 
 ::: {.column width="4%"}
@@ -272,20 +268,123 @@ function(){
 ::: {.column width="48%"}
 [R]{.chead}
 
-- Syntax has a very steep learning curve
-- Less specialized, but more flexible options
-- Faster development of new packages
-- Advanced capabilities and harmonization with other languages and tools: python, markdown, git, html
+-   Syntax has a very steep learning curve
+-   Less specialized, but more flexible options
+-   Faster development of new packages
+-   Advanced capabilities and harmonization with other languages and tools: python, markdown, git, html
 :::
-
-::::
-
+:::
 
 # Workflow
 
 ## Git and GitHub
 
+## Workflow Definition and Features {.smaller}
 
-## Our Workflow
+- A workflow is a system for managing repetitive processes and tasks which occur in a particular order.
 
-## Explaining the Cluster Analysis
+  - Output recognition
+  -  Process understanding
+  - Tasks that compose the process
+  - Tasks simplification
+
+- Why we need so much structure? [**Human Rights Data Analysis Group**](https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/)
+
+  - We can learn from the past (record and improve our process)
+  - We can read each other work
+  - We can’t test whether what we’ve done is correct
+
+## Our Workflow {.smaller}  
+
+- [**LAC Reports Workflow**](https://github.com/ctoruno/LAC-Reports)
+- [**Visualization Repository**](https://github.com/ctoruno/WJP-Data-Viz)
+- [**Handbook**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
+
+![](media/code_structure.png)
+
+
+## Explaining the Cluster Analysis {.smaller}  
+
+- First we load all the libraries we need, and also we load the data base that contains all the historical scores.
+
+``` r
+# Loading libraries
+library(pacman)
+p_load(readxl, 
+       tidyverse, 
+       factoextra, 
+       cluster, 
+       NbClust, 
+       FactoMineR, 
+       dendextend)
+
+# Loading data base with all the scores
+
+master_data.df <- read_csv("Data/master_data.csv") %>%
+  mutate(region4labels = str_replace_all(region, "&", "&\n"))
+
+```
+## Explaining the Cluster Analysis {.smaller}  
+
+- We prepare the data. We need a data base with the rate of the scores between 2015 and 2022.
+
+``` r
+factors_data <- master_data.df %>%
+    select(year, country, starts_with("fct"), roli_index) %>% 
+  filter(year == 2015 | year == 2022) %>% # This is the period that we are studying
+  dplyr::rename(factor_1 = fct1,
+                factor_2 = fct2,
+                factor_3 = fct3,
+                factor_4 = fct4,
+                factor_5 = fct5,
+                factor_6 = fct6,
+                factor_7 = fct7,
+                factor_8 = fct8) %>% # We reshape the data base to make easier the estimations of the rates
+  pivot_wider(id_cols = country, names_from = year, 
+              values_from = c(factor_1, factor_2, factor_3, factor_4, factor_5, 
+                              factor_6, factor_7, factor_8, roli_index,
+                              )) %>% # We estimate the rate changes between 2015 and 2022 per factor
+  mutate(differences_factor_1 = ((factor_1_2022 - factor_1_2015)/factor_1_2015), 
+         differences_factor_2 = ((factor_2_2022 - factor_2_2015)/factor_2_2015),
+         differences_factor_3 = ((factor_3_2022 - factor_3_2015)/factor_3_2015),
+         differences_factor_4 = ((factor_4_2022 - factor_4_2015)/factor_4_2015),
+         differences_factor_5 = ((factor_5_2022 - factor_5_2015)/factor_5_2015),
+         differences_factor_6 = ((factor_6_2022 - factor_6_2015)/factor_6_2015),
+         differences_factor_7 = ((factor_7_2022 - factor_7_2015)/factor_7_2015),
+         differences_factor_8 = ((factor_8_2022 - factor_8_2015)/factor_8_2015),
+         differences_roli = (roli_index_2022 - roli_index_2015)/roli_index_2015) %>%
+  select(country, starts_with("differences"))
+```
+## Explaining the Cluster Analysis {.smaller}  
+
+We do some tests to define the optimal number of clusters. This is based on the independent information provided by each one.
+
+``` r
+fviz_nbclust(cluster_data, kmeans, method = 'wss') # According to the graph the main change 
+                                                   # is produced after the third cluster
+fviz_nbclust(cluster_data, kmeans, method = 'silhouette') # According to this method the optimal 
+                                                          # number of cluster is two
+```
+::: columns
+::: {.column width="48%"}
+
+![](media/clusters.png)
+:::
+::: {.column width="48%"}
+
+![](media/clusters2.png)
+:::
+:::
+
+## Explaining the Cluster Analysis {.smaller}  
+
+We build each cluster we the Hierarchical Clustering Method, and we identified the way that each country is distr
+
+``` r
+res2 <- hcut(cluster_data, k = 3, stand = T, hc_metric = 'euclidean') # We use the package FactoMineR
+```
+![](media/dendogram.png)
+
+
+
+

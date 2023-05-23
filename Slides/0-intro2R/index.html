@@ -658,12 +658,105 @@
 <section id="git-and-github" class="slide level2">
 <h2>Git and GitHub</h2>
 </section>
-<section id="our-workflow" class="slide level2">
-<h2>Our Workflow</h2>
+<section id="workflow-definition-and-features" class="slide level2 smaller">
+<h2>Workflow Definition and Features</h2>
+<ul>
+<li><p>A workflow is a system for managing repetitive processes and tasks which occur in a particular order.</p>
+<ul>
+<li>Output recognition</li>
+<li>Process understanding</li>
+<li>Tasks that compose the process</li>
+<li>Tasks simplification</li>
+</ul></li>
+<li><p>Why we need so much structure? <a href="https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/"><strong>Human Rights Data Analysis Group</strong></a></p>
+<ul>
+<li>We can learn from the past (record and improve our process)</li>
+<li>We can read each other work</li>
+<li>We can’t test whether what we’ve done is correct</li>
+</ul></li>
+</ul>
 </section>
-<section id="explaining-the-cluster-analysis" class="slide level2">
+<section id="our-workflow" class="slide level2 smaller">
+<h2>Our Workflow</h2>
+<ul>
+<li><a href="https://github.com/ctoruno/LAC-Reports"><strong>LAC Reports Workflow</strong></a></li>
+<li><a href="https://github.com/ctoruno/WJP-Data-Viz"><strong>Visualization Repository</strong></a></li>
+<li><a href="https://ctoruno.quarto.pub/wjp-r-handbook/coding.html"><strong>Handbook</strong></a></li>
+</ul>
+
+<img data-src="media/code_structure.png" class="r-stretch"></section>
+<section id="explaining-the-cluster-analysis" class="slide level2 smaller">
 <h2>Explaining the Cluster Analysis</h2>
-<div class="footer footer-default">
+<ul>
+<li>First we load all the libraries we need, and also we load the data base that contains all the historical scores.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Loading libraries</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">library</span>(pacman)</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">p_load</span>(readxl, </span>
+<span id="cb9-4"><a href="#cb9-4"></a>       tidyverse, </span>
+<span id="cb9-5"><a href="#cb9-5"></a>       factoextra, </span>
+<span id="cb9-6"><a href="#cb9-6"></a>       cluster, </span>
+<span id="cb9-7"><a href="#cb9-7"></a>       NbClust, </span>
+<span id="cb9-8"><a href="#cb9-8"></a>       FactoMineR, </span>
+<span id="cb9-9"><a href="#cb9-9"></a>       dendextend)</span>
+<span id="cb9-10"><a href="#cb9-10"></a></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># Loading data base with all the scores</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a></span>
+<span id="cb9-13"><a href="#cb9-13"></a>master_data.df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"Data/master_data.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a>  <span class="fu">mutate</span>(<span class="at">region4labels =</span> <span class="fu">str_replace_all</span>(region, <span class="st">"&amp;"</span>, <span class="st">"&amp;</span><span class="sc">\n</span><span class="st">"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="explaining-the-cluster-analysis-1" class="slide level2 smaller">
+<h2>Explaining the Cluster Analysis</h2>
+<ul>
+<li>We prepare the data. We need a data base with the rate of the scores between 2015 and 2022.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>factors_data <span class="ot">&lt;-</span> master_data.df <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="fu">select</span>(year, country, <span class="fu">starts_with</span>(<span class="st">"fct"</span>), roli_index) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2015</span> <span class="sc">|</span> year <span class="sc">==</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span> <span class="co"># This is the period that we are studying</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(<span class="at">factor_1 =</span> fct1,</span>
+<span id="cb10-5"><a href="#cb10-5"></a>                <span class="at">factor_2 =</span> fct2,</span>
+<span id="cb10-6"><a href="#cb10-6"></a>                <span class="at">factor_3 =</span> fct3,</span>
+<span id="cb10-7"><a href="#cb10-7"></a>                <span class="at">factor_4 =</span> fct4,</span>
+<span id="cb10-8"><a href="#cb10-8"></a>                <span class="at">factor_5 =</span> fct5,</span>
+<span id="cb10-9"><a href="#cb10-9"></a>                <span class="at">factor_6 =</span> fct6,</span>
+<span id="cb10-10"><a href="#cb10-10"></a>                <span class="at">factor_7 =</span> fct7,</span>
+<span id="cb10-11"><a href="#cb10-11"></a>                <span class="at">factor_8 =</span> fct8) <span class="sc">%&gt;%</span> <span class="co"># We reshape the data base to make easier the estimations of the rates</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>  <span class="fu">pivot_wider</span>(<span class="at">id_cols =</span> country, <span class="at">names_from =</span> year, </span>
+<span id="cb10-13"><a href="#cb10-13"></a>              <span class="at">values_from =</span> <span class="fu">c</span>(factor_1, factor_2, factor_3, factor_4, factor_5, </span>
+<span id="cb10-14"><a href="#cb10-14"></a>                              factor_6, factor_7, factor_8, roli_index,</span>
+<span id="cb10-15"><a href="#cb10-15"></a>                              )) <span class="sc">%&gt;%</span> <span class="co"># We estimate the rate changes between 2015 and 2022 per factor</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a>  <span class="fu">mutate</span>(<span class="at">differences_factor_1 =</span> ((factor_1_2022 <span class="sc">-</span> factor_1_2015)<span class="sc">/</span>factor_1_2015), </span>
+<span id="cb10-17"><a href="#cb10-17"></a>         <span class="at">differences_factor_2 =</span> ((factor_2_2022 <span class="sc">-</span> factor_2_2015)<span class="sc">/</span>factor_2_2015),</span>
+<span id="cb10-18"><a href="#cb10-18"></a>         <span class="at">differences_factor_3 =</span> ((factor_3_2022 <span class="sc">-</span> factor_3_2015)<span class="sc">/</span>factor_3_2015),</span>
+<span id="cb10-19"><a href="#cb10-19"></a>         <span class="at">differences_factor_4 =</span> ((factor_4_2022 <span class="sc">-</span> factor_4_2015)<span class="sc">/</span>factor_4_2015),</span>
+<span id="cb10-20"><a href="#cb10-20"></a>         <span class="at">differences_factor_5 =</span> ((factor_5_2022 <span class="sc">-</span> factor_5_2015)<span class="sc">/</span>factor_5_2015),</span>
+<span id="cb10-21"><a href="#cb10-21"></a>         <span class="at">differences_factor_6 =</span> ((factor_6_2022 <span class="sc">-</span> factor_6_2015)<span class="sc">/</span>factor_6_2015),</span>
+<span id="cb10-22"><a href="#cb10-22"></a>         <span class="at">differences_factor_7 =</span> ((factor_7_2022 <span class="sc">-</span> factor_7_2015)<span class="sc">/</span>factor_7_2015),</span>
+<span id="cb10-23"><a href="#cb10-23"></a>         <span class="at">differences_factor_8 =</span> ((factor_8_2022 <span class="sc">-</span> factor_8_2015)<span class="sc">/</span>factor_8_2015),</span>
+<span id="cb10-24"><a href="#cb10-24"></a>         <span class="at">differences_roli =</span> (roli_index_2022 <span class="sc">-</span> roli_index_2015)<span class="sc">/</span>roli_index_2015) <span class="sc">%&gt;%</span></span>
+<span id="cb10-25"><a href="#cb10-25"></a>  <span class="fu">select</span>(country, <span class="fu">starts_with</span>(<span class="st">"differences"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="explaining-the-cluster-analysis-2" class="slide level2 smaller">
+<h2>Explaining the Cluster Analysis</h2>
+<p>We do some tests to define the optimal number of clusters. This is based on the independent information provided by each one.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">fviz_nbclust</span>(cluster_data, kmeans, <span class="at">method =</span> <span class="st">'wss'</span>) <span class="co"># According to the graph the main change </span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>                                                   <span class="co"># is produced after the third cluster</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">fviz_nbclust</span>(cluster_data, kmeans, <span class="at">method =</span> <span class="st">'silhouette'</span>) <span class="co"># According to this method the optimal </span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>                                                          <span class="co"># number of cluster is two</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><img data-src="media/clusters.png"></p>
+</div><div class="column" style="width:48%;">
+<p><img data-src="media/clusters2.png"></p>
+</div>
+</div>
+</section>
+<section id="explaining-the-cluster-analysis-3" class="slide level2 smaller">
+<h2>Explaining the Cluster Analysis</h2>
+<p>We build each cluster we the Hierarchical Clustering Method, and we identified the way that each country is distr</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>res2 <span class="ot">&lt;-</span> <span class="fu">hcut</span>(cluster_data, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">stand =</span> T, <span class="at">hc_metric =</span> <span class="st">'euclidean'</span>) <span class="co"># We use the package FactoMineR</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="media/dendogram.png" class="r-stretch"><div class="footer footer-default">
 
 </div>
 </section></section>
