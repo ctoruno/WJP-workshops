@@ -378,7 +378,7 @@ fviz_nbclust(cluster_data, kmeans, method = 'silhouette') # According to this me
 
 ## Explaining the Cluster Analysis {.smaller}  
 
-We build each cluster we the Hierarchical Clustering Method, and we identified the way that each country is distr
+We build each cluster with the Hierarchical Clustering Method, and we identified the way that each country is distr
 
 ``` r
 res2 <- hcut(cluster_data, k = 3, stand = T, hc_metric = 'euclidean') # We use the package FactoMineR
