@@ -299,21 +299,6 @@ function(){
 
 -   Why we need so much structure? [**Human Rights Data Analysis Group**](https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/)
 
-<<<<<<< Updated upstream
-    -   We can learn from the past (record and improve our process)
-    -   We can read each other work
-    -   We can't test whether what we've done is correct
-
-## Our Workflow {.smaller}
-
--   [**LAC Reports Workflow**](https://github.com/ctoruno/LAC-Reports)
--   [**Visualization Repository**](https://github.com/ctoruno/WJP-Data-Viz)
--   [**Handbook**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
-
-![](media/code_structure.png)
-
-## Explaining the Cluster Analysis {.smaller}
-=======
   - We can learn from the past (record and improve our process)
   - We can read each other work
   - We can test whether what we’ve done is correct
@@ -331,8 +316,9 @@ function(){
 :::
 :::
 
-# Cluster Analysis
->>>>>>> Stashed changes
+# Cluster Analysis 
+
+## Explaining the Cluster Analysis {.smaller}
 
 -   First we load all the libraries we need, and also we load the data base that contains all the historical scores.
 
@@ -355,7 +341,7 @@ master_data.df <- read_csv("Data/master_data.csv") %>%
 
 ## Explaining the Cluster Analysis {.smaller}
 
--   We prepare the data. We need a data base with the rate of the scores between 2015 and 2022.
+-   We prepare the data. We need a data base with the rate of the scores between 2015 and 2022 per country.
 
 ``` r
 factors_data <- master_data.df %>%
@@ -415,8 +401,6 @@ res2 <- hcut(cluster_data, k = 3, stand = T, hc_metric = 'euclidean') # We use t
 ```
 
 ![](media/dendogram.png)
-<<<<<<< Updated upstream
-=======
 
 ## Main results of the Cluster Analysis {.smaller}  
 
@@ -451,7 +435,3 @@ res2 <- hcut(cluster_data, k = 3, stand = T, hc_metric = 'euclidean') # We use t
 - [**Stack overflow**](https://stackoverflow.com/)
 
 - Carlos and Santiago
-
-
-
->>>>>>> Stashed changes

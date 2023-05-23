@@ -678,12 +678,10 @@
 <li>Tasks that compose the process</li>
 <li>Tasks simplification</li>
 </ul></li>
-<li><p>Why we need so much structure? <a href="https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/"><strong>Human Rights Data Analysis Group</strong></a></p>
-<ul>
-<li>We can learn from the past (record and improve our process)</li>
-<li>We can read each other work</li>
-<li>We can test whether what we’ve done is correct</li>
-</ul></li>
+<li><p>Why we need so much structure? <a href="https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/"><strong>Human Rights Data Analysis Group</strong></a></p></li>
+<li><p>We can learn from the past (record and improve our process)</p></li>
+<li><p>We can read each other work</p></li>
+<li><p>We can test whether what we’ve done is correct</p></li>
 </ul>
 </section>
 <section id="our-workflow" class="slide level2 smaller">
@@ -728,7 +726,7 @@
 <section id="explaining-the-cluster-analysis-1" class="slide level2 smaller">
 <h2>Explaining the Cluster Analysis</h2>
 <ul>
-<li>We prepare the data. We need a data base with the rate of the scores between 2015 and 2022.</li>
+<li>We prepare the data. We need a data base with the rate of the scores between 2015 and 2022 per country.</li>
 </ul>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>factors_data <span class="ot">&lt;-</span> master_data.df <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>    <span class="fu">select</span>(year, country, <span class="fu">starts_with</span>(<span class="st">"fct"</span>), roli_index) <span class="sc">%&gt;%</span> </span>
