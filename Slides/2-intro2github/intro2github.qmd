@@ -36,6 +36,14 @@ editor: visual
     -   Introduces [forks]{.high} and [pull requests]{.high}.
     -   It provides features for issue tracking, project management, commenting, issues submission, and code review.
     -   GitHub Desktop available.
+    
+## Do I need Github? {.smaller}
+- [No, you don't.]{.high2}
+- Git is already installed in your computer.
+- For example:
+  - `git status`
+  - `git pull`
+  - `git log`
 
 ## Repos {.smaller}
 
@@ -127,6 +135,7 @@ editor: visual
 - [How can we handle them?]{.high2}
 
 ### Option 1
+<br>
 ![](media/conflicts1.png)
 
 
@@ -136,6 +145,66 @@ editor: visual
 
 ::: panel-tabset
 ### Overview
+- A branch is a lightweight movable pointer that represents an independent line of development.
+- You can isolate and work on different features within a repository without affecting the main code.
+- You can switch between branches at any time but commits are branch-specific.
+- [Always make sure]{.high} you are working on the desired one.
+- You can merge the progress on your branch to the main code once you finish experimenting on it.
+- [How can we perform the branching?]{.high2}
+
+### Step 1:
+- Create and name a new branch
+<br>
+![](media/branch1.png)
+
+### Step 2:
+- Publish your new branch
+<br>
+![](media/branch2.png)
+
+:::
+
+## Pull Request {.smaller}
+
+::: panel-tabset
+### Overview
+- A pull request is a feature that allows to propose changes they've made in their branch to be reviewed and potentially merged into another branch.
+- A proper implementation of pull requests comes along with some benefits:
+  - Facilitates code reviewing
+  - Allows a smoother collaboration
+  - Continous Integration
 
 ### Step 1
+- Submit a Pull Request to merge your changes into the main code.
+![](media/pullreq1.png)
+
+### Step 2
+- If conflicts arise, you will need to resolve them.
+![](media/pullreq2.png)
+
+### Step 3
+- Resolve the conflicts
+![](media/pullreq3.png)
+
+### Step 4
+- Review and approve changes if necessary.
+![](media/pullreq4.png)
+
 :::
+
+## Stata & Git implementation
+![](media/stata.png)
+
+## Updating branches
+::: panel-tabset
+### Step 1
+![](media/update1.png)
+
+### Step 2
+![](media/update2.png)
+
+:::
+
+## 
+
+[Thank you for your attention]{.chead .center-xy}

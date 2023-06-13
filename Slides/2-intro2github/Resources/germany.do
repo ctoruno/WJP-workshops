@@ -56,8 +56,8 @@ g trstprl_bin = (trstprl > 5) if !missing(trstprl)
 g trstplc_bin = (trstplc > 5) if !missing(trstplc)
 g trstplt_bin = (trstplt > 5) if !missing(trstplt)
 g trstprt_bin = (trstprt > 5) if !missing(trstprt)
-g trstep_bin = (trstep > 5) if !missing(trstep)
-g trstun_bin = (trstun > 5) if !missing(trstun)
+g trstep_bin  = (trstep > 5)  if !missing(trstep)
+g trstun_bin  = (trstun > 5)  if !missing(trstun)
 g trstsci_bin = (trstsci > 5) if !missing(trstsci)
 *=================================================================
 
