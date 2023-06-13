@@ -1,0 +1,164 @@
+---
+title: "Data Analytics Unit"
+subtitle: "Quarterly Orientation<br><br><small>June, 2023</small>"
+format:
+  revealjs: 
+    theme: [simple, custom.scss]
+    embed-resources: true
+editor: visual
+---
+
+##  {.center-y}
+
+> *"If we have data, let's look at the data. If all we have are opinions, let's go with mine."* <br> [*Jim Barksdale*]{style="text-align:left;"}
+
+## The DAU {.smaller}
+
+::: columns
+::: {.column width="70%"}
+![](media/orgchart.png)
+:::
+
+::: {.column width="30%"}
+-   Small but growing team
+-   More of an horizontal coordination
+-   Data focused
+:::
+:::
+
+## What do we do?
+
+-   Data collection through non-traditional methods
+-   Data wrangling and visualization
+-   Workflow developments
+-   Research
+
+## What do we do?
+
+-   Data collection through non-traditional methods
+-   Data wrangling and visualization
+-   Workflow developments
+-   Research
+
+<br><br> [We are not involved in the calculation of index scores]{.center-x .high .sm-font}
+
+## Data collection {.smaller}
+
+::: panel-tabset
+### Webscrapping
+
+-   Web Scraping is the process in which we collect information from the web with the objective to export it as an organized data structure that would fit our needs.
+-   Automatized process through [*scrapper* bots]{.high}.
+-   Data collected:
+    -   [**EU Lawyers Data**](https://carlos-toruno.shinyapps.io/EU-Lawyer-Data/){target="_blank"}: Lawyer information from national and regional Bar Associations across 27 EU countries.
+    -   **Political News Data**: Headlines, description and corpus of around 100,000 news from the political columns of 12 major newspapers in the EU.
+
+### Geocoding
+
+-   Geocoding is the process of transforming a description of a location into [geographical coordinates]{.high} such as longitude and latitude.
+-   Python/R APIs from online mapping services such as Google Maps or Open Street Maps.
+-   Implemented in the [**EU Lawyers Data**](https://carlos-toruno.shinyapps.io/EU-Lawyer-Data/){target="_blank"}.
+:::
+
+## Data wrangling and visualization {.smaller}
+
+::: panel-tabset
+### Wrangling
+
+-   Data wrangling is the process of transforming unstructured or "*dirty*" data into a [tidy and structured]{.high} version ready for analysis.
+-   Process is outcome specific:
+    -   Index Scores
+    -   [Country Reports](https://worldjusticeproject.org/our-work/research-and-data/country-reports){target="_blank"}
+    -   EU Sub-national
+
+### Visualization
+
+-   Multidisciplinary process
+-   Visualization should be [data driven]{.high} and [outcome oriented]{.high}.
+-   Outcomes worked:
+    -   Charts
+    -   Infographics
+    -   Interactive dashboards
+    -   Dynamic visualizations
+:::
+
+## Workflow developments {.smaller}
+
+::: panel-tabset
+### Tools
+
+-   Adequate tools can have a great impact on the efficiency of the team.
+-   We develop our own tools for:
+    -   Faster understanding of data: [GPP Interactive Data Map](https://gpp-datamap.streamlit.app/)
+    -   Easy replication: [WJP Data Viz repository](https://github.com/ctoruno/WJP-Data-Viz){target="_blank"}
+    -   Team coordination: [DAU R Coding Handbook](https://ctoruno.quarto.pub/wjp-r-handbook/workflow.html){target="_blank"}
+    -   Reduce members dependency: [ROLI Map Generator](https://roli-mapgen.streamlit.app/){target="_blank"}
+
+### Frameworks
+
+> *Anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions.*<br> Hadley Wickham
+
+-   An unified workflow that allows different members of the team to work together in the same project (and even the same code) in an harmonious way but with little interaction between members.
+
+-   Examples
+
+    -   Charts automation
+    -   Reports mass production
+
+### Example
+
+::: columns
+::: {.column width="50%"}
+![](media/LAC_Reports_WorkFlow-1.png)
+:::
+
+::: {.column width="50%"}
+![](media/LAC_Reports_WorkFlow-2.png)
+:::
+:::
+:::
+
+## How do we do it? {.smaller}
+
+::: panel-tabset
+### Stata
+
+-   Data cleaning
+-   Data exploration
+
+### R
+
+-   Intensive data cleaning
+-   Data Visualization
+-   Workflow developments
+-   Geospatial manipulation
+-   Statistical Models
+
+### Python
+
+-   Webscrapping
+-   Machine Learning Models
+-   Natural Language Processing
+-   Tools development
+
+### Other
+
+-   [HTML & CSS]{.chead}
+    -   Online reports
+    -   Aesthetic manipulation
+-   [Markdown & Quarto]{.chead}
+    -   Documentation
+    -   Presentations
+    -   Internal reports
+:::
+
+## Resources
+
+-   [R Coding Handbook](https://ctoruno.quarto.pub/wjp-r-handbook/){target="_blank"}
+-   [Blog posts](https://www.carlos-toruno.com/blog/){target="_blank"}
+-   [Dataviz-Inspiration](https://www.dataviz-inspiration.com/){target="_blank"}
+-   [Data Camp](https://www.datacamp.com/){target="_blank"}
+
+## 
+
+[Thank you for your attention]{.chead .center-xy}

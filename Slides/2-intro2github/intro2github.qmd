@@ -1,0 +1,141 @@
+---
+title: "Introduction to GitHub"
+subtitle: "Brief introduction using GitHub Desktop<br><br><small>Data Analytics Unit</small>"
+format:
+  revealjs: 
+    theme: [simple, custom.scss]
+    embed-resources: true
+editor: visual
+---
+
+## Before we start
+
+-   Requirements:
+    -   Download and install git in your local computer from [git-scm.com](https://git-scm.com/){target="_blank"}.
+    -   Create a GitHub account on [github.com](https://github.com/){target="_blank"}.
+    -   Download and install GitHub Desktop from [desktop.github.com](https://desktop.github.com/){target="_blank"}.
+
+## Git {.smaller}
+
+-   Free and open source distributed [version control system]{.high}.
+-   Multiple features:
+    -   [Track changes]{.high} to your files over time.
+    -   Reliable and secure way to collaborate with multiple developers.
+    -   Git allows you to work offline and then synchronize your changes when you're connected.
+    -   Stores your project's history as a series of snapshots or [commits]{.high}.
+    -   Enables [branching]{.high} and [merging]{.high}, allowing for parallel development and experimentation.
+    -   It provides tools for [resolving conflicts]{.high} when multiple people modify the same file simultaneously.
+
+## Github {.smaller}
+
+-   [Web-based platform]{.high} that uses Git for version control.
+-   One of the largest online communities for developers.
+-   Complementary features:
+    -   It provides a centralized location for hosting and collaborating on Git repositories.
+    -   It offers a user-friendly interface to manage Git repositories and track changes.
+    -   Introduces [forks]{.high} and [pull requests]{.high}.
+    -   It provides features for issue tracking, project management, commenting, issues submission, and code review.
+    -   GitHub Desktop available.
+
+## Repos {.smaller}
+
+::: panel-tabset
+### Overview
+
+-   A repository is a container that holds all the files, directories, and the history of changes for a project.
+-   [Root folder]{.high} of the project.
+-   [How do we set up a repo?]{.high2}
+
+### Step 1
+-   Go to [github.com](https://github.com/){target="_blank"} and create a new repo 
+
+![](media/setup1.png)
+
+### Step 2
+-   Fill the available options 
+
+![](media/setup2.png)
+
+### Step 3
+-   Clone the repo in your local machine using GitHub Desktop 
+
+![](media/setup3.png)
+:::
+
+## Collaborating {.smaller}
+
+::: panel-tabset
+### Overview
+- You can add collaborators to your project following these steps:
+  - Go to your repository's website
+  - Click on the [Settings]{.high} tab
+  - Click on the [Collaborators]{.high} entry located on the left-side panel
+  - Authenticate yourself
+  - Click on the [Add people]{.high} button
+  - Search and add collaborators
+
+### Guide
+<br><br>
+![](media/collab.png)
+:::
+
+## Commiting and Pushing {.smaller}
+
+::: panel-tabset
+### Overview
+
+-   A commit saves a [snapshot]{.high} of your project's state at a specific point in time.
+-   Commits are saved in the `git` folder.
+-   You can restore your projects to a specific commit in time.
+-   Commits allow you to track and manage the process.
+-   A push is the action of [sending]{.high} your local commits to a remote repository (GitHub).
+-   [How do we publish changes?]{.high2}
+
+### Step 1
+
+-   Make sure your local version of the repository is updated by [FETCHING]{.high} any potential PULL. 
+
+![](media/commit1.png)
+
+### Step 2
+
+-   Select, unselect or ignore files from list and commit them. 
+
+![](media/commit2.png)
+
+### Step 3
+
+-   Publish branch (if it is first commit) or push them 
+
+![](media/commit3.png)
+:::
+
+## Pulling changes {.smaller}
+
+-   Pull refers to the process of retrieving the latest changes from a remote repository and merging them into your local repository. 
+<br><br>
+![](media/pull.png)
+
+## Conflicts {.smaller}
+
+::: panel-tabset
+### Overview
+- Conflicts arise when simultaneous and not harmonious changes were made to the same part of a file by different branches or contributors.
+- Conflicts are flagged using special characters (<<<<<<====>>>>>>)
+- GitHub will not be able to publish or update your commit until you solve these conflicts.
+- Always make sure of fetching [BEFORE]{.high} commiting!!! 
+- [How can we handle them?]{.high2}
+
+### Option 1
+![](media/conflicts1.png)
+
+
+:::
+
+## Branching {.smaller}
+
+::: panel-tabset
+### Overview
+
+### Step 1
+:::
