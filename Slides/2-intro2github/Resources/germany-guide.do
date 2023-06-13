@@ -19,24 +19,27 @@ version 15.1
 
 *------ (a) Carlos Toruno:
 if (inlist("`c(username)'", "carlostorunopaniagua")) {
-	global path2SP "/Users/carlostorunopaniagua/Documents/GitHub/WJP-workshops/Slides/2-intro2github/"
+	global path2SP "/Users/carlostorunopaniagua/Library/CloudStorage/OneDrive-WorldJusticeProject/Data Analytics"
+	global path2wd "/Users/carlostorunopaniagua/Library/CloudStorage/OneDrive-WorldJusticeProject/Data Analytics/intro2github"
 }
 
 *------ (b) Santiago Pardo:
 else if (inlist("`c(username)'", "santiagopardo")) {
-	global path2SP "/Users/santiagopardo/OneDrive - World Justice Project/..."
+	global path2SP "..."									// MODIFY BY COLLABORATOR IN COMMIT SLIDE
+	global path2wd "..."									// MODIFY BY COLLABORATOR IN COMMIT SLIDE
 }
 
 *------ (c) Any other user: PLEASE INPUT YOUR PERSONAL PATH TO THE SHAREPOINT DIRECTORY:
 else {
 	global path2SP "INSERT PATH TO WORKING DIRECTORY HERE"
+	global path2wd "INSERT PATH TO WORKING DIRECTORY HERE"
 }
 
 /*=====================================================================================================================================
 					1. Data Loading
 =====================================================================================================================================*/
 
-use "${path2SP}/Resources/ESS-Germany-data/ESS-Germany-10.dta", clear
+use "${path2SP}/intro2github/Data/ESS-Germany-10.dta", clear
 
 
 /*=====================================================================================================================================
@@ -51,7 +54,7 @@ recode anctry1 (11070/11078 = 1 "German") ///
 	
 *--- Recoding variables as binary
 
-*================= DROP BY COLLABORATOR IN PULL SLIDE =============
+*================= DROP BY COLLABORATOR IN COMMIT SLIDE =============
 g trstprl_bin = (trstprl > 5) if !missing(trstprl)
 g trstplc_bin = (trstplc > 5) if !missing(trstplc)
 g trstplt_bin = (trstplt > 5) if !missing(trstplt)
@@ -62,7 +65,7 @@ g trstsci_bin = (trstsci > 5) if !missing(trstsci)
 *=================================================================
 
 
-*================= ADD BY COLLABORATOR IN PULL SLIDE =============
+*================= ADD BY COLLABORATOR IN COMMIT SLIDE =============
 local trust_vars = "trstlgl trstplc trstplt trstprt trstep trstun trstsci"
 foreach x in `trust_vars' {
 	g `x'_bin = (`x' > 5) if !missing(`x')
@@ -94,6 +97,7 @@ replace dscretn  = . if dscretn == 1
 *--- Collapsing data
 collapse (mean) *_bin, by(region)
 
-
+*--- Save data
+save "${path2wd}/Outcome/new_data.dta", replace
 
 

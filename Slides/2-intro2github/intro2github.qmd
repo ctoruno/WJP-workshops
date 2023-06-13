@@ -134,10 +134,20 @@ editor: visual
 - Always make sure of fetching [BEFORE]{.high} commiting!!! 
 - [How can we handle them?]{.high2}
 
-### Option 1
+### Step 1
+- Stash changes and update your local copy.
 <br>
 ![](media/conflicts1.png)
 
+### Step 2
+- Resolve the conflicts from GitHub and/or any designated software
+<br>
+![](media/conflicts2.png)
+
+### Step 3
+- Commit and push the resolved copy
+<br>
+![](media/conflicts3.png)
 
 :::
 
@@ -152,12 +162,12 @@ editor: visual
 - You can merge the progress on your branch to the main code once you finish experimenting on it.
 - [How can we perform the branching?]{.high2}
 
-### Step 1:
+### Step 1
 - Create and name a new branch
 <br>
 ![](media/branch1.png)
 
-### Step 2:
+### Step 2
 - Publish your new branch
 <br>
 ![](media/branch2.png)
