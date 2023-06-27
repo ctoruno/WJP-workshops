@@ -1,0 +1,381 @@
+---
+title: "Data Validation Protocols"
+author: "Data Analytics Unit"
+format:
+   revealjs: 
+    theme: [simple, custom.scss]
+    embed-resources: true
+editor: visual
+---
+
+# Data Validation Process 
+
+## Data Validation Process {.smaller}
+
+- Data validation entails the assessment and verification of data quality, accuracy, and reliability, thereby supporting informed decision-making.
+
+- Within World Justice Project (WJP), we have identified three distinct processes where these data checks are utilized:
+
+    - The data cleaning process.
+    - The estimation of results.
+    - The analysis of results.
+    
+- Currently, our focus lies on developing protocols for the analysis of results.
+
+## Data cleaning process {.smaller}
+
+- The data cleaning process involves utilizing data validation to ensure the reliability of observations.
+
+- In the case of WJP, specific variables are included and cross-referenced with external sources and the Rule of Law Index to ensure data consistency and reliability.
+
+- Challenges: 
+
+    - What level of analysis will be used for data checking? Will it be at the country level or the NUTS level?
+    - Is the process of comparison with external sources necessary in the cleaning process? With which sources would it be compared?
+
+## Estimations of results {.smaller}
+
+- The estimation process involves data validation using two approaches: replication checks and data consistency assessment.
+
+- Replication checks: Every estimated data point is independently replicated by another data analyst to ensure accuracy and reliability.
+
+- Data consistency assessment: Observations that lead to significant changes are meticulously reviewed, especially in the case of expert surveys. Additionally, aggregate responses from population surveys are assessed to ensure data consistency.
+
+- Challenges:
+
+    - Determining the selection of appropriate third-party sources for data estimation and assessment.
+    - Identifying the specific stages of the process where data analytics can intervene to enhance the overall process.
+
+## Analysis of results {.smaller}
+
+- After gathering all the results to be included, it is essential to conduct a comprehensive validation of these findings.
+
+- The variations among the results are carefully examined to detect any biases or inaccuracies in any given country.
+
+- The results are then compared with other sources to ensure their consistency and reliability.
+
+- Challenges:
+
+    - Can the questions be cross-referenced with the specified NUTS regions?
+    - If we decide to aggregate the scores by country, how should we determine the weighting of each component?
+    - How should we address situations where external data for certain sub-pillars is unavailable for comparison?
+
+# Analysis of Results
+
+# Introduction
+
+## Introduction {.smaller}
+
+\
+
+\
+
+
+- The protocol primarily focuses on validating the results obtained, rather than directly validating the quality of the underlying data.
+
+- This protocol serves as a rigorous quantitative complement and a valuable tool for post-estimation validations.
+
+    - **It does not replace the checks conducted by researchers.**
+
+# Methodology
+
+## Methodology  {.smaller}
+
+\
+
+\
+
+
+- These methodologies validate WJP Global Index results and reports for Latin America and the Caribbean.
+
+- Quantitative methods detect data changes and discrepancies with other sources.
+
+- They complement qualitative research but do not replace it.
+
+- Methodologies evaluate results, not data collection process.
+
+- Two types of methodologies: internal and external validations.
+
+## Internal and External Validations {.smaller}
+
+- Internal validations: These checks provide confidence in the data quality, ensuring it is representative, consistent, and free from distortions or biases.
+
+    - Outliers' detection
+    
+    - Changes over time
+    
+- External validations: These checks provide valuable insights into the validity and credibility of the project results, ensuring they are in line with established standards and corroborated by independent measures
+
+    - Rankings and other indexes
+    
+    - Third party sources questions
+
+## Internal Validations {.smaller}
+
+::: {.panel-tabset}
+
+### Outliers' detection
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+- Outliers represent data points that significantly deviate from most observations.
+
+- Detecting outliers during internal data validation ensures the dataset is representative, consistent, and free from anomalies, enabling more reliable and robust analysis.
+
+- The step by step approach to applying the method is here: Outliers' detection.
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="50%"}
+
+![](media/outliers.png){width="100%"}
+
+:::
+
+::::
+
+### Changes over time
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+- Monitoring changes over time helps detect data anomalies and highlights events that may have caused significant fluctuations or alterations.
+
+- This monitoring will employ two approaches to identify changes over time: conducting t-tests and analyzing trends.
+
+- The step by step approach to applying the method is here: Changes over time.
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="50%"}
+
+\
+
+\
+
+![](media/changes.png){width="100%"}
+
+:::
+
+::::
+
+:::
+
+## External Validations {.smaller}
+
+::: {.panel-tabset}
+
+### Rankings and other indexes
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+- This comparative analysis will help determine if countries' results and ranking order based on their scores align with other sources that aim to measure similar concepts.
+
+- We will establish thresholds of 3%, 5%, and 10% above or below their respective positions.
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="45%"}
+
+\
+
+\
+
+![](media/indexes.png){width="100%"}
+
+:::
+
+::::
+
+### Third-party sources questions 
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+- To provide a more precise comparison between external and internal data, a set of comparable questions will be selected, and the results will be compared at the country level.
+
+- The objective is to obtain microdata for testing internal and external data consistency through a mean difference test. If microdata is unavailable, differences exceeding thresholds of 3%, 5%, and 10% will be highlighted.
+
+:::
+
+::: {.column width="10%"}
+
+:::
+
+::: {.column width="45%"}
+
+\
+
+\
+
+![](media/third.png){width="100%"}
+
+:::
+
+::::
+
+:::
+
+
+# Projects
+
+## Projects {.smaller}
+
+- WJP Rule of Law Index
+
+    - The Index Team has devised a protocol to validate the data and    results for 140 countries worldwide. This protocol contains some of     the methodologies presented.
+    
+- Latin America and the Caribbean Reports
+
+    - In the case of reports focusing on Latin America and the Caribbean, validations were conducted at the question level, employing most of the methodologies presented.
+
+- European Union Subnational Project
+
+    - The Data Analytics Team proposes a harmonized data validation approach for the European Union report, combining methodologies used in both the index and the reports.
+
+# EU Subnational Project Proposal
+
+## EU Subnational Project {.smaller}
+
+- EU subnational project aims to generate indicators for assessing justice, governance, and the rule of law in 110 regions across 27 EU member states.
+
+- Three resources (QRQ, GPP, third-party sources) utilized to develop indicators for NUTS and country-level scores.
+
+- Comparing results with other sources is crucial for reliability and confidence assessment.
+
+- Data Analytics Unit implements a protocol integrating methodologies to validate and compare project outputs.
+
+- The protocol complements qualitative checks, ensuring accuracy, identifying inconsistencies, and instilling confidence in the obtained results.
+
+
+## Integrated Process of Validation {.smaller}
+
+- At pillar level
+
+    - An examination of outliers at the NUTS level for each pillar.
+    - A comparison of the aggregated pillar scores by country with rankings from external sources relevant to the respective pillar.
+    
+- At sub-pillar level
+
+    - An assessment of outliers at the NUTS level for each sub-pillar.
+    - Whenever possible, a comparison of the aggregated sub-pillar scores by country with rankings from external sources associated with the specific sub-pillar.
+    - An analysis of changes in the selected questions over time within each sub-pillar.
+    - A comparison of the questions with external sources.
+
+## Possible Outcomes {.smaller}
+
+- Insights report
+
+    - We plan to generate a comprehensive report highlighting the key insights from this analysis. 
+    - This report will include the decisions made and recommendations regarding the outcomes. 
+
+- Web platform to test the outcomes
+
+    - We will design an application that facilitates the external and internal testing of all outcomes on a country-specific basis.
+    - This app will integrate qualitative checks and display all the flags associated with each pillar and sub-pillar within the platform.
+
+## Resources {.smaller}
+
+::: {.panel-tabset}
+
+### Resources
+
+- WJP Rule of Law Index Team 
+
+    - The WJP ROLI Team has identified several sources to compare for the estimations. We will add most of them for the ranking analysis.
+
+- [Catalog](https://wjproject.sharepoint.com/:x:/r/research/_layouts/15/Doc.aspx?sourcedoc=%7B441FF86C-0ED3-4533-BA07-4F0A38EF3881%7D&file=EUS%20Indicator%20Catalog.xlsx&action=default&mobileredirect=true)
+
+    - The catalog is a tool for identifying questions from other European surveys, encompassing approximately 2800 questions organized by sub-pillar and pillar.
+
+### Catalog 
+
+- Each pillar consists of over 300 indicators/questions, with the first pillar having the most indicators and the sixth pillar having the fewest.
+
+- The catalog does not include any indicators for sub-pillars 6.4-6.8, 7.5-7.6, and 8.6.
+
+- Sub-pillars 2.3, 7.4, and 8.2 have fewer than 10 indicators/questions available in the catalog.
+
+- Subnational questions account for less than 7% of the total questions across all pillars. Pillar 7 has the fewest number of questions, with only 1, while pillar 2 has the highest number with 24.
+
+:::
+
+## Progress {.smaller}
+
+\
+
+\
+
+
+- Completed development of the conceptual framework and questionnaire.
+
+-  Almost final version of the catalog.
+
+- Identified a comprehensive list of potential sources for comparison for each pillar and sub-pillar.
+
+- Successfully implemented codes and step-by-step instructions for all internal tests.
+
+- Achieved significant progress in designing the desired outcomes, with examples of outcomes serving as initial reference points.
+
+## Gaps {.smaller}
+
+
+\
+
+- Identify new sources for sub-pillars with insufficient information to initiate external comparisons.
+
+    - Researchers' assistance is required to align these sources with the conceptual framework.
+
+- Develop data cleaning functions for the selected external sources.
+
+- Establish a threshold for data comparison.
+
+- Integrate qualitative checks into the quantitative analysis.
+
+- Begin designing the platform.
+
+## Questions {.smaller}
+
+::: {.panel-tabset}
+
+### Data cleaning process
+
+- What level of analysis will be used for data checking? Will it be at the country level or the NUTS level?
+    
+- Is the process of comparison with external sources necessary in the cleaning process? With which sources would it be compared?
+
+- If we choose to aggregate the scores by country, how should we determine the weighting?
+
+### Estimations of results
+
+- Determining the selection of appropriate third-party sources for data estimation and assessment.
+    
+- Identifying the specific stages of the process where data analytics can intervene to enhance the overall process.
+    
+### Analysis of results
+
+- Can the questions be cross-referenced with the specified NUTS regions?
+    
+- If we decide to aggregate the scores by country, how should we determine the weighting of each component?
+    
+- How should we address situations where external data for certain sub-pillars is unavailable for comparison?
+    
+:::

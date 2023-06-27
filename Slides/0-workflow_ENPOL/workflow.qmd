@@ -1,0 +1,153 @@
+---
+title: "Workflow"
+author: "Data Analytics Unit"
+format:
+   revealjs: 
+    theme: [simple, custom.scss]
+    embed-resources: true
+editor: visual
+---
+
+# Workflow Definition
+
+## Workflow Definition and Features {.smaller}
+
+-   A workflow is a system for managing repetitive processes and tasks which occur in a particular order.
+
+    -   Output recognition
+    -   Process understanding
+    -   Tasks that compose the process
+    -   Tasks simplification
+
+-   Why we need so much structure? [**Human Rights Data Analysis Group**](https://hrdag.org/2016/06/14/the-task-is-a-quantum-of-workflow/)
+
+    -   We can record and improve our process
+    -   We can read each other work
+    -   We can test whether what we've done is correct
+
+## Workflow tools: git and SharePoint {.smaller}
+
+-   Git is a free and open source software that allows users to set up a version control system designed to handle projects. For more information: [**What is github?**](https://kinsta.com/knowledgebase/what-is-github/)
+
+    -   GitHub is a website and cloud-based service that helps developers store and manage their code, as well as track and control changes to their code.
+    -   Using the Git features allow us to simultaneously work on the same project and even in the same code without worrying about interfering with other members of the team.
+
+-   Git is only used as a code repository. We don't share any data and output here.
+
+-   Git can be linked and integrated with SharePoint. As a result, our workflow is contingent upon the manner in which our team chooses to structure our folders.
+
+## Workflow tools: some examples
+
+![](media/github-ex.png)
+
+## Workflow tools: standardizing computer relative paths {.smaller}
+
+-   We manage our code assuming it can be replicable for anyone. This entails the need to standardize and synchronize the paths on our computer to the project.
+
+    -   Rproject or a code which synchronize the root directory
+
+``` r
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+##
+## 2.  SharePoint Path                                                      ----
+##
+## +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# SharePoint path
+if (Sys.info()["user"] == "johnDoe") {
+  path2SP <- "/Users/johnDoe/OneDrive-WJP/Data Analytics/"
+
+} else if (Sys.info()["user"] == "anaPerez") {
+  path2SP <- "/CloudStorage/OneDrive-WJP/Data Analytics/"
+  
+} else{
+  path2SP <- "PLEASE INSERT YOUR PERSONAL PATH TO THE SP DAU DIRECTORY"
+  
+}
+```
+
+# Our Workflow
+
+## Data analytics workflow for visualizations
+
+-   [**LAC Reports Workflow**](https://github.com/ctoruno/LAC-Reports)
+-   [**Visualization Repository**](https://github.com/ctoruno/WJP-Data-Viz)
+
+![](media/code_structure.png)
+
+## Data analytics documentation {.smaller}
+
+-   [**Handbook of DAU protocols**](https://ctoruno.quarto.pub/wjp-r-handbook/coding.html)
+-   The documentation instills confidence in the estimations we are utilizing.
+-   There are specific data-related decisions that we need to emphasize for the purpose of transparency.
+
+``` r
+  data_subset.df <- master_data.df %>%
+    filter(country %in% group) %>%
+    
+    # Latest year is different for Paraguay
+    mutate(latestYear = if_else(country == "Paraguay", 2021, 2022)) %>%
+    mutate(year = if_else(country == "Nicaragua" & year == 2021, NA_real_, year)) # We didn't use the data 
+                                                                                  # from Nicaragua in 2021
+                                                                                  # index
+```
+
+-   Good documentation facilitates the seamless integration of new team members and enables non-coding team members to comprehend the process effectively.
+
+-   This is a good way to standardize the language of the project.
+
+## Workflow prerequisites
+
+-   Outline made by Alex and the Data Analytics Team.
+
+-   Design team specifications.
+
+-   Data questionnaires and Data maps.
+
+-   Data checks and analysis to take decisions.
+
+# Challenges and questions in the ENPOL project
+
+## Objective 1: General report {.smaller}
+
+-   Objective 1: Summarize and present national and state-level criminal justice practices, trends, and deficiencies through use of ENPOL and other data sources.
+
+-   This report is similar to the LAC reports; we can implement a similar workflow.
+
+-   Nevertheless ¿How are we going to organize the previous analysis of the data? ¿What are the needs of the research team in the pre-analysis?
+
+-   On which platform are we going to work?
+
+-   Should this data repository be external to the main files?
+
+## Objetive 2: Explanation and qualititative and quantitative research report. {.smaller}
+
+-   Objective 2: Prioritize and explain CJ system deficiencies revealed in Objective 1 through qualitative and quantitative research in 3-5 states.
+
+-   How can we organize a workflow that adds the qualitative and quantitative data?
+
+-   Should this be managed in an inter-depend way?
+
+-   What are the outputs that we are thinking in this report?
+
+## Objetive 3: State government proposals for specific criminal justice reform policies.
+
+-   Beyond the production of key figures to support each proposal, is any additional visualization or analysis needed?
+
+    -   At this point, should we divide the workflow organization per product?
+
+# Conclusions
+
+## Conclusions {.smaller}
+
+-   Thinking in a workflow before start all the production process allow us to save time and avoid repetitive process.
+
+-   A workflow can help to replicate and update the work that we made.
+
+-   A well-structured workflow facilitates easy comprehension of the process for all team members, enabling seamless integration for new members.
+
+-   A workflow and a good documentation is a sign of good practice and rigor.
+
+-   We can incorporate certain aspects of the data analytics workflow into the project. However, this project extends beyond mere report visualization. This presents us with an opportunity to expand the workflow, allowing us to replicate it in research and policy brief reports.
+
+# Gracias!
